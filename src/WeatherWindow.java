@@ -14,7 +14,7 @@ public class WeatherWindow extends JFrame {
         this.weatherService = weatherService;
 
         cityPicker = new JComboBox<>(new City[] {
-            new City("Targe Mures", 46.54, 24.56),
+            new City("Targu Mures", 46.54, 24.56),
             new City("Bucharest", 44.43, 26.10),
             new City("Cluj-Napoca", 46.77, 23.59),
             new City("Budapest", 47.50, 19.04),

@@ -1,18 +1,31 @@
-## Getting Started
+# Weather Client
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A small Swing weather app demonstrating Dependency Inversion. The UI receives
+a `WeatherService`; it does not know about HTTP or Open-Meteo.
 
-## Folder Structure
+## Requirements
 
-The workspace contains two folders by default, where:
+- Java 17+
+- Maven
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Run with real Open-Meteo data
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+```bash
+mvn compile exec:java
+Run offline with mock data
+mvn compile exec:java -Dexec.args="--mock"
+Run tests
+mvn test
+Example API request
+https://api.open-meteo.com/v1/forecast?latitude=46.54&longitude=24.56&current=temperature_2m,wind_speed_10m
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Example response (values change over time):
+{
+  "latitude": 46.54,
+  "longitude": 24.56,
+  "current": {
+    "time": "2026-10-23T12:00",
+    "temperature_2m": 18.5,
+    "wind_speed_10m": 12.0
+  }
+}

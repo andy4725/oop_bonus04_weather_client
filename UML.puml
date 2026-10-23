@@ -1,0 +1,23 @@
+@startuml
+interface WeatherService {
+  +getCurrent(latitude: double, longitude: double): Weather
+}
+
+class OpenMeteoClient
+class MockWeather
+class WeatherWindow
+class WeatherPresenter
+record Weather
+class WeatherException
+class App
+
+WeatherService <|.. OpenMeteoClient
+WeatherService <|.. MockWeather
+WeatherWindow --> WeatherService : uses
+WeatherPresenter --> WeatherService : uses
+OpenMeteoClient ..> Weather
+MockWeather ..> Weather
+WeatherService ..> WeatherException
+App ..> OpenMeteoClient : selects
+App ..> MockWeather : selects
+@enduml
